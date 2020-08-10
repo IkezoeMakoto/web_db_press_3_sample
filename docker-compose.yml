@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   web:
-    image: nginx:1.19
+    build: ./nginx
     ports:
       - "80:80"
   #app:
