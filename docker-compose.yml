@@ -1,6 +1,9 @@
 version: "3.7"
 services:
-  #web:
+  web:
+    image: nginx:1.19
+    ports:
+      - "80:80"
   #app:
   #databases:
   #kvs:
