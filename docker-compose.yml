@@ -4,6 +4,9 @@ services:
     build: ./nginx
     ports:
       - "80:80"
-  #app:
+  app:
+    image: php:7.4-fpm
+    volumes:
+      - "./app/webroot:/app"
   #databases:
   #kvs:
