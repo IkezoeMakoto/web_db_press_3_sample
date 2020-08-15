@@ -5,7 +5,7 @@ services:
     ports:
       - "80:80"
   app:
-    image: php:7.4-fpm
+    build: ./app
     volumes:
       - "./app/webroot:/app"
   #databases:
