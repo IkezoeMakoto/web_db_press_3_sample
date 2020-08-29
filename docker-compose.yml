@@ -8,5 +8,18 @@ services:
     build: ./app
     volumes:
       - "./app/webroot:/app"
-  #databases:
+  databases:
+    image: mysql:8
+    environment:
+      - "TZ=Asia/Tokyo"
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=wdp
+      - MYSQL_USER=wdp
+      - MYSQL_PASSWORD=wdp123
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
   #kvs:
+volumes:
+  mysql:
