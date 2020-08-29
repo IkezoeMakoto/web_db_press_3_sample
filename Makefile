@@ -10,3 +10,9 @@ up:
 down:
 	docker-compose down
 .PHONY: down
+
+SERVICE=app
+CMD=composer
+exec:
+	docker-compose run --rm ${SERVICE} ${CMD}
+.PHONY: exec
