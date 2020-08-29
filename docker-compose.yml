@@ -20,6 +20,7 @@ services:
       - mysql:/var/lib/mysql
     ports:
       - "3306:3306"
-  #kvs:
+  kvs:
+    image: redis:6
 volumes:
   mysql:
