@@ -3,23 +3,19 @@ services:
   web:
     build: ./nginx
     ports:
-      - "80:80"
+      - "${HTTP_PORT}:80"
   app:
     build: ./app
     volumes:
       - "./app/webroot:/app"
   database:
     image: mysql:8
-    environment:
-      - "TZ=Asia/Tokyo"
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=wdp
-      - MYSQL_USER=wdp
-      - MYSQL_PASSWORD=wdp123
+    env_file:
+      - .env
     volumes:
       - mysql:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:3306"
   kvs:
     image: redis:6
 volumes:
