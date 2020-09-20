@@ -1,9 +1,9 @@
-FROM php:7.4-fpm
+FROM php:7.4-fpm-alpine
 
 WORKDIR /app
 COPY ./webroot /app
 
-RUN apt update && apt install -y git libzip-dev \
+RUN apk add --update --no-cache make git libzip-dev \
     && docker-php-ext-install zip pdo_mysql
 
 RUN make /bin/composer

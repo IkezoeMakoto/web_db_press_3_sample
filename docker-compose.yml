@@ -17,6 +17,6 @@ services:
     ports:
       - "${MYSQL_PORT}:3306"
   kvs:
-    image: redis:6
+    image: redis:6-alpine
 volumes:
   mysql:
