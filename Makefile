@@ -1,9 +1,22 @@
-setup:
+github_token:
+	@echo 'Please setting your github_token!'
+	@echo 'Create github_token here https://github.com/settings/tokens'
+	@echo '  touch github_token && chmod 600 github_token && vim github_token'
+	@echo ''
+	@echo 'see: https://docs.github.com/ja/packages/using-github-packages-with-your-projects-ecosystem/configuring-docker-for-use-with-github-packages'
+	@exit 1
+
+login: NAME=
+login: github_token
+	cat ./github_token | docker login docker.pkg.github.com -u $(NAME) --password-stdin
+.PHONY: login
+
+setup: login
 	$(MAKE) up
 	docker-compose run --rm app make -C blog vendor
 .PHONY: setup
 
-up:
+up: login
 	docker-compose up -d
 .PHONY: up
 
