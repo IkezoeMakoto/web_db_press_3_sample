@@ -8,5 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Login GitHub Registry
+        run: docker login docker.pkg.github.com -u ikezoemakoto -p ${{ secrets.GITHUB_TOKEN }}
+
       - name: Docker image build and push
         run: make image/build image/push
